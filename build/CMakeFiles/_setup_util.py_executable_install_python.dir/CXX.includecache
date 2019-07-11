@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/404961/dev/crane_ws/build/catkin_generated/add_python_executable/_setup_util.py_executable_install_python/_setup_util.py.cpp
+iostream
+-
+windows.h
+-
+

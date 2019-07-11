@@ -1,0 +1,14 @@
+controller_list:
+  - name: fake_crane_arm_controller
+    joints:
+      - base_to_link1
+      - link1_to_link2
+      - Link2_to_link3
+      - Link3_to_Link4
+      - Link4_to_Link5
+      - link5_to_link6
+      - link6_to_link7
+  - name: fake_crane_hand_controller
+    joints:
+      - gbase_to_lg
+      - gbase_to_rg

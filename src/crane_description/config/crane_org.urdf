@@ -1,0 +1,3228 @@
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+<?xml version="1.0" ?>
+<robot name="crane">
+    <!-- Arm of the crane -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1.5 1.5 5" />
+            </geometry>
+            <origin xyz="0 0 2.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="base_to_link1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin xyz="0 0 5" />
+    </joint>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.5" radius="0.75" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.75" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link1_to_link2" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" upper="-0.175" lower="-0.873" velocity="1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="-1.5707963 0 0" xyz="0 0 1.5" />
+    </joint>
+    <link name="link2">
+        <visual>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="12" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="6 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link2_to_link3" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0" upper="1.5707963" velocity="1" />
+        <parent link="link2" />
+        <child link="link3" />
+        <origin xyz="12 0 0" />
+    </joint>
+    <link name="link3">
+        <visual>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="2" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707963 0" xyz="1 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link3_to_Link4" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="0.175" upper="1.5707963" velocity="1" />
+        <parent link="link3" />
+        <child link="link4" />
+        <origin xyz="2 0 0" />
+    </joint>
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="10" radius="0.5" />
+            </geometry>
+            <origin rpy="0 -1.5707936 0" xyz="5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="Link4_to_Link5" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-3.14" upper="0.23" velocity="1" />
+        <parent link="link4" />
+        <child link="link5" />
+        <origin xyz="10 0 0" />
+    </joint>
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.5" />
+            </geometry>
+            <origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.25 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link5_to_link6" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="link5" />
+        <child link="link6" />
+        <origin rpy="-1.5707936 0 0" xyz="0 0.5 0" />
+    </joint>
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.2" />
+            </geometry>
+            <origin xyz="0 0 0.5" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="link6_to_Gripper" type="revolute">
+        <axis xyz="0 1 0" />
+        <limit effort="1000" lower="-0.05" upper="0.05" velocity="1" />
+        <parent link="link6" />
+        <child link="gripper_base" />
+        <origin xyz="0 0 1" />
+    </joint>
+    <!-- Start of gripper -->
+    <link name="gripper_base">
+        <visual>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="3.5 1 0.5" />
+            </geometry>
+            <origin xyz="0 0 0.25" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the front -->
+    <joint name="gbase_to_flg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="flgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 -0.33 0.5" />
+    </joint>
+    <link name="flgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="flg1_to_flg2" type="fixed">
+        <parent link="flgripper1" />
+        <child link="flgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="flgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_frg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="frgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="1.5 0.33 0.5" />
+    </joint>
+    <link name="frgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="frg1_to_frg2" type="fixed">
+        <parent link="frgripper1" />
+        <child link="frgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="frgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <!-- Gripper in the back -->
+    <joint name="gbase_to_blg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.9" upper="0.16" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="blgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 -0.33 0.5" />
+    </joint>
+    <link name="blgripper1">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="blg1_to_blg2" type="fixed">
+        <parent link="blgripper1" />
+        <child link="blgripper2" />
+        <origin xyz="1 0 0" />
+    </joint>
+    <link name="blgripper2">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="gbase_to_brg" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000" lower="-0.16" upper="0.9" velocity="1" />
+        <parent link="gripper_base" />
+        <child link="brgripper1" />
+        <origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-1.5 0.33 0.5" />
+    </joint>
+    <link name="brgripper1">
+        <visual>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 1 0.5" />
+            </geometry>
+            <origin xyz="0 0.5 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    <joint name="brg1_to_brg2" type="fixed">
+        <parent link="brgripper1" />
+        <child link="brgripper2" />
+        <origin xyz="0 1 0" />
+    </joint>
+    <link name="brgripper2">
+        <visual>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 0.15 0.5" />
+            </geometry>
+            <origin xyz="0.5 0 0" />
+        </collision>
+        
+<inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+
+    </link>
+    
+<transmission name="trans_base_to_link1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_to_link1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_to_link1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link1_to_link2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link1_to_link2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link1_to_link2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link2_to_link3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link2_to_link3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link2_to_link3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link3_to_Link4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link3_to_Link4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link3_to_Link4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Link4_to_Link5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Link4_to_Link5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Link4_to_Link5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link5_to_link6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link5_to_link6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link5_to_link6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_link6_to_Gripper">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="link6_to_Gripper">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="link6_to_Gripper_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_flg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_flg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_flg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_frg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_frg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_frg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_blg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_blg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_blg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_gbase_to_brg">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gbase_to_brg">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="gbase_to_brg_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>

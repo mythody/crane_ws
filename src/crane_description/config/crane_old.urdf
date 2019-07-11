@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<robot name="crane">
+
+	<!-- Arm of the crane -->
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size="1.5 1.5 5"/>
+			</geometry>
+			<origin xyz="0 0 2.5"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1.5 1.5 5"/>
+			</geometry>
+			<origin xyz="0 0 2.5"/>
+		</collision>
+		
+	</link>
+
+	
+	<joint name="base_to_link1" type="continuous">
+		<axis xyz="0 0 1"/>
+		<parent link="base_link"/>
+		<child link="link1"/>
+		<origin xyz="0 0 5"/>
+	</joint>
+	
+	<link name="link1">
+		<visual>
+			<geometry>
+				<cylinder length="1.5" radius="0.75"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.75"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="1.5" radius="0.75"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.75"/>
+		</collision>
+	</link>
+	
+	<joint name="link1_to_link2" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" upper="-0.175"  lower= "-0.873" velocity="1"/>
+		<parent link="link1"/>
+		<child link="link2"/>
+		<origin rpy="-1.5707963 0 0" xyz="0 0 1.5"/>
+	</joint>
+	
+  
+	<link name="link2">
+		<visual>
+			<geometry>
+				<cylinder length="12" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707963 0" xyz="6 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="12" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707963 0" xyz="6 0 0"/>
+		</collision>
+	</link>
+	<!-- C:/Users/404961/dev/crane_ws/src/crane_description/config/crane.urdf -->
+
+
+	<joint name="Link2_to_link3" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="0" upper = "1.5707963" velocity="1"/>
+		<parent link="link2"/>
+		<child link="link3"/>
+		<origin xyz="12 0 0"/>
+	</joint>
+	
+	<link name="link3">
+		<visual>
+			<geometry>
+				<cylinder length="2" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707963 0" xyz="1 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="2" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707963 0" xyz="1 0 0"/>
+		</collision>
+	</link>
+
+    <joint name ="Link3_to_Link4" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="0.175" upper="1.5707963" velocity = "1"/>
+		<parent link="link3"/>
+		<child link="link4"/>
+		<origin xyz="2 0 0"/>
+	</joint>
+	
+	<link name ="link4">
+		<visual>
+			<geometry>
+				<cylinder length="10" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707936 0" xyz="5 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="10" radius="0.5"/>
+			</geometry>
+			<origin rpy="0 -1.5707936 0" xyz="5 0 0"/>
+		</collision>
+	</link>
+	
+	<!--<joint name="Link4_to_Link5" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="-0.9" upper ="0.9" velocity="1"/>
+		<parent link="link4"/>
+		<child link="link5"/>
+		<origin xyz="10 0 0"/>
+	</joint>
+	
+	<link name="link5">
+		<visual>
+			<geometry>
+				<cylinder length="1.5" radius="0.5"/>
+			</geometry>
+			<origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.75 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="1.5" radius="0.5"/>
+			</geometry>
+			<origin rpy="-1.5707936 -1.5707936 0" xyz="0 0.75 0"/>
+		</collision>
+	</link>
+
+	<joint name="link5_to_Gripper" type="continuous">
+		<axis xyz="0 0 1"/>
+		<parent link="link5"/>
+		<child link="gripper_base"/>
+		<origin rpy="-1.5707936 0 0" xyz="0 1.5 0"/>
+	</joint> -->
+
+	<!-- Start of gripper -->
+
+	<!-- <link name="gripper_base">
+		<visual>
+			<geometry>
+				<box size="5 2 0.5"/>
+			</geometry>
+			<origin xyz="0 0 0.25"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="5 2 0.5"/>
+			</geometry>
+			<origin xyz="0 0 0.25"/>
+		</collision>
+	</link> -->
+	
+	<!-- Gripper in the front -->
+	
+	<!-- <joint name="gbase_to_flg" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="-0.9" upper ="0.16" velocity="1"/>
+		<parent link="gripper_base"/>
+		<child link="flgripper1"/>
+		<origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="2 -0.33 0.5"/>
+	</joint>
+
+	<link name="flgripper1">
+		<visual>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</collision>
+	</link>
+
+	<joint name="flg1_to_flg2" type="fixed">
+		<parent link="flgripper1"/>
+		<child link="flgripper2"/>
+		<origin xyz="1 0 0"/>
+	</joint>
+
+	<link name="flgripper2">
+		<visual>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</collision>
+	</link>
+
+	<joint name="gbase_to_frg" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="-0.16" upper ="0.9" velocity="1"/>
+		<parent link="gripper_base"/>
+		<child link="frgripper1"/>
+		<origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="2 0.33 0.5"/>
+	</joint>
+
+	<link name="frgripper1">
+		<visual>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</collision>
+	</link>
+
+	<joint name="frg1_to_frg2" type="fixed">
+		<parent link="frgripper1"/>
+		<child link="frgripper2"/>
+		<origin xyz="0 1 0"/>
+	</joint>
+
+	<link name="frgripper2">
+		<visual>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</collision>
+	</link> -->
+
+<!-- Gripper in the back -->
+
+<!-- <joint name="gbase_to_blg" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="-0.9" upper ="0.16" velocity="1"/>
+		<parent link="gripper_base"/>
+		<child link="blgripper1"/>
+		<origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-2 -0.33 0.5"/>
+	</joint>
+
+	<link name="blgripper1">
+		<visual>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</collision>
+	</link>
+
+	<joint name="blg1_to_blg2" type="fixed">
+		<parent link="blgripper1"/>
+		<child link="blgripper2"/>
+		<origin xyz="1 0 0"/>
+	</joint>
+
+	<link name="blgripper2">
+		<visual>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</collision>
+	</link>
+
+	<joint name="gbase_to_brg" type="revolute">
+		<axis xyz="0 0 1"/>
+		<limit effort="1000" lower="-0.16" upper ="0.9" velocity="1"/>
+		<parent link="gripper_base"/>
+		<child link="brgripper1"/>
+		<origin rpy="1.5707963 -0.7853981 -1.5707963" xyz="-2 0.33 0.5"/>
+	</joint>
+
+	<link name="brgripper1">
+		<visual>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.15 1 0.5"/>
+			</geometry>
+			<origin xyz="0 0.5 0"/>
+		</collision>
+	</link>
+
+	<joint name="brg1_to_brg2" type="fixed">
+		<parent link="brgripper1"/>
+		<child link="brgripper2"/>
+		<origin xyz="0 1 0"/>
+	</joint>
+
+	<link name="brgripper2">
+		<visual>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 0.15 0.5"/>
+			</geometry>
+			<origin xyz="0.5 0 0"/>
+		</collision>
+	</link> -->
+
+
+</robot>

@@ -1,0 +1,90 @@
+# MoveIt-specific simulation settings
+moveit_sim_hw_interface:
+  joint_model_group: controllers_initial_group_
+  joint_model_group_pose: controllers_initial_pose_
+# Settings for ros_control control loop
+generic_hw_control_loop:
+  loop_hz: 300
+  cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+  joints:
+    - base_to_link1
+    - link1_to_link2
+    - Link2_to_link3
+    - Link3_to_Link4
+    - Link4_to_Link5
+    - link5_to_link6
+    - link6_to_link7
+    - gbase_to_lg
+    - gbase_to_rg
+  sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+controller_list:
+  []
+crane_arm_controller:
+  type: position_controllers/JointPositionController
+  joints:
+    - base_to_link1
+    - link1_to_link2
+    - Link2_to_link3
+    - Link3_to_Link4
+    - Link4_to_Link5
+    - link5_to_link6
+    - link6_to_link7
+  gains:
+    base_to_link1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    link1_to_link2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link2_to_link3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link3_to_Link4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link4_to_Link5:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    link5_to_link6:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    link6_to_link7:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+crane_hand_controller:
+  type: position_controllers/JointPositionController
+  joints:
+    - gbase_to_lg
+    - gbase_to_rg
+  gains:
+    gbase_to_lg:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    gbase_to_rg:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

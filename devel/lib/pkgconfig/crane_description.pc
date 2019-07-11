@@ -1,0 +1,8 @@
+prefix=C:/Users/404961/dev/crane_ws/devel
+
+Name: crane_description
+Description: Description of crane_description
+Version: 0.0.0
+Cflags: 
+Libs: -LC:/Users/404961/dev/crane_ws/devel/lib 
+Requires: 

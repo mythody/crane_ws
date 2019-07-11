@@ -1,0 +1,15 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: C:/Users/404961/dev/crane_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"nmake" "/NOLOGO" "cmTC_c2733\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_c2733.dir\build.make /nologo -L                  CMakeFiles\cmTC_c2733.dir\build
+Building C object CMakeFiles/cmTC_c2733.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~3\2017\PROFES~1\VC\Tools\MSVC\1416~1.270\bin\Hostx64\x64\cl.exe @C:\Users\404961\AppData\Local\Temp\nmC870.tmp
+CheckIncludeFile.c
+C:\Users\404961\dev\crane_ws\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'pthread.h': No such file or directory
+NMAKE : fatal error U1077: 'C:\PROGRA~2\MICROS~3\2017\PROFES~1\VC\Tools\MSVC\1416~1.270\bin\Hostx64\x64\cl.exe' : return code '0x2'
+Stop.
+NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\nmake.exe"' : return code '0x2'
+Stop.
+
+
