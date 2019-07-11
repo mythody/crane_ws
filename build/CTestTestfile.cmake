@@ -6,3 +6,4 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("crane_description")
 subdirs("crane_config")
+subdirs("pick_place")

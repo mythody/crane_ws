@@ -109,6 +109,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("C:/Users/404961/dev/crane_ws/build/crane_description/cmake_install.cmake")
   include("C:/Users/404961/dev/crane_ws/build/crane_config/cmake_install.cmake")
+  include("C:/Users/404961/dev/crane_ws/build/pick_place/cmake_install.cmake")
 
 endif()
 
